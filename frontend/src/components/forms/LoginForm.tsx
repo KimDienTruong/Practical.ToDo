@@ -1,4 +1,11 @@
+import console from "console";
+
+
 export const LoginForm = () => {
+  const onClick = () => {
+    console.log("Login button clicked");
+  }
+
   return (
     <form className="bg-white p-6 rounded shadow-md w-full max-w-sm">
       <div className="mb-4">
@@ -41,6 +48,7 @@ export const LoginForm = () => {
         <button
           className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
           type="button"
+          onClick={onClick}
         >
           Sign In
         </button>

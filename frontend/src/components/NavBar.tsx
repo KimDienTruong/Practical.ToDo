@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const NavBar = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [authenticated] = useState(false);
 
   return (
     <nav className="bg-blue-600 text-white p-4 sticky top-0 z-10">

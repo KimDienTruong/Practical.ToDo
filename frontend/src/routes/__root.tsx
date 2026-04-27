@@ -11,7 +11,7 @@ export const Route = createRootRoute({
         <link rel="stylesheet" href="/styles.css" />
       </head>
       <body>
-        <div className="bg-[url(/src/assets/background.jpg)] h-full max-w-screen bg-cover">
+        <div className="bg-[url(/src/assets/background.jpg)] h-full max-h-full max-w-screen bg-cover">
           <NavBar />
           <Outlet />
           <Footer />
