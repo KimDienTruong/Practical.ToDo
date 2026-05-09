@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { PageNumber } from "./PageNumber";
 
 export const Pagination = ({
@@ -7,7 +8,7 @@ export const Pagination = ({
 }: {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  onPageChange: Dispatch<SetStateAction<number>>;
 }) => {
   const leftPageNumbers = [];
   for (let i = currentPage; i <= currentPage + 3; i++) {
@@ -18,6 +19,18 @@ export const Pagination = ({
   for (let i = totalPages - 1; i >= totalPages - 3; i--) {
     if (i > 0) {
       rightPageNumbers.unshift(i);
+    }
+  }
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      onPageChange(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      onPageChange(currentPage - 1);
     }
   }
   return (
@@ -35,7 +48,7 @@ export const Pagination = ({
             aria-label="Pagination"
             className="isolate inline-flex -space-x-px rounded-md"
           >
-            <button className="relative inline-flex items-center rounded-l-md px-2 py-2 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0">
+            <button className="relative inline-flex items-center rounded-l-md px-2 py-2 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0" onClick={handlePreviousPage}>
               <span className="sr-only">Previous</span>
               <p>Left</p>
             </button>
@@ -48,7 +61,10 @@ export const Pagination = ({
             {rightPageNumbers.map((number) => (
               <PageNumber key={number} page={number} />
             ))}
-            <button className="relative inline-flex items-center rounded-r-md px-2 py-2  inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0">
+            <button
+              className="relative inline-flex items-center rounded-r-md px-2 py-2  inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0"
+              onClick={handleNextPage}
+            >
               <span className="sr-only">Previous</span>
               <p>Right</p>
             </button>
