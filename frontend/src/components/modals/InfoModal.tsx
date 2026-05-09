@@ -1,15 +1,14 @@
 import React from "react";
 import { createPortal } from "react-dom";
 
-type FormModalProps = {
+type InfoModalProps = {
   title: string;
-
+  message: string;
   isOpen: boolean;
   onClose: () => void;
-  children?: React.ReactNode;
 };
 
-export const FormModal = ({ isOpen, onClose, children, title }: FormModalProps) => {
+const InfoModal = ({ title, message, isOpen, onClose }: InfoModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
@@ -20,9 +19,19 @@ export const FormModal = ({ isOpen, onClose, children, title }: FormModalProps) 
             {title}
           </h2>
         </div>
-        <div>{children}</div>
+        <div>{message}</div>
+        <div className="flex flex-row-reverse w-full border-gray-300 border-t">
+          <button
+            className="bg-blue-500 mt-2 w-20 h-8 text-white rounded-lg"
+            onClick={onClose}
+          >
+            Close
+          </button>
+        </div>
       </div>
     </div>,
-    document.getElementById("modal-portal") as HTMLElement,
+    document.getElementById("modal-portal") as HTMLElement
   );
 };
+
+export default InfoModal;
