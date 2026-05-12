@@ -1,14 +1,11 @@
-import { createRouter, RouterProvider } from '@tanstack/react-router'
-import React from 'react'
+import { RouterProvider, type RegisteredRouter } from "@tanstack/react-router";
 
 type AppProps = {
-    router: ReturnType<typeof createRouter>
-}
+  router: RegisteredRouter;
+};
 
-const App = ({router} : Readonly<AppProps>) => {
-  return (
-    <RouterProvider router={router} />
-  )
-}
+const App = ({ router }: Readonly<AppProps>) => {
+  return <RouterProvider router={router} />;
+};
 
-export default App
+export default App;

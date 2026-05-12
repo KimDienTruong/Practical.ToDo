@@ -3,7 +3,6 @@ import { ToDoCard } from "./ToDoCard";
 import { Pagination } from "./paginations/Pagination";
 import AddToDoForm from "./forms/AddToDoForm";
 import { FormModal } from "./modals/FormModal";
-import InfoModal from "./modals/InfoModal";
 
 type ListItem = {
   id: number;
